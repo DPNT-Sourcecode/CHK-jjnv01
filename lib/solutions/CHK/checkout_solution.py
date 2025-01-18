@@ -58,10 +58,22 @@ def find_best_offer(item_name,amount, all_offers):
                 best_offer_amount = offer_amount
     return best_offer_amount, best_offer_price
 
-
+def find_all_offers(item_name, amount):
+    offers = []
+    while amount>0:
+        offer = find_best_offer(item_name, amount, special_offers)
+        offer_amount = offer[0]
+        offer_price = offer[1]
+        if offer_price is not None:
+            offers.append([offer_amount, offer_price])
+            amount-=offer_amount
+        else:
+            break
+    return offers
 
 
     
+
 
 
 
