@@ -78,23 +78,35 @@ def multiitem_offers(item_counter):
         if item not in individual_prices:
             raise ValueError
         for offer_item in whole_cart_offers:
-            free_item = whole_cart_offers[item][1]
-            number_discounted_items = 0 
-
-            if item == offer_item and item == whole_cart_offers[item][1] and whole_cart_offers[item][1] in item_counter:
-                required_amount = whole_cart_offers[item][0]
-                number_discounted_items = floor((item_counter[item]) / required_amount)
-
-            elif item == offer_item and whole_cart_offers[item][1] in item_counter:
-                required_amount = whole_cart_offers[item][0]
-                number_discounted_items = floor(item_counter[item] / required_amount)
-
-            if number_discounted_items >= item_counter[free_item]:
-                item_counter[free_item] = 0
-            else:
-                item_counter[free_item] -= number_discounted_items
-
+            if item == offer_item and whole_cart_offers[item][1] in item_counter:
+                if item == offer_item and item != whole_cart_offers[item][1]:
+                    number_discounted_items = floor(item_counter[item] / required_amount)
+                else:
+                    number_discounted_items = floor((item_counter[item]-1) / required_amount)
+                if number_discounted_items>=item_counter[whole_cart_offers[item][1]]:
+                    item_counter[whole_cart_offers[item][1]]=0
+                else:
+                    item_counter[whole_cart_offers[item][1]]-= number_discounted_items
     return item_counter
+
+    #         free_item = whole_cart_offers[item][1]
+    #         number_discounted_items = 0 
+
+    #         if item == offer_item and item == whole_cart_offers[item][1] and whole_cart_offers[item][1] in item_counter:
+    #             required_amount = whole_cart_offers[item][0]
+    #             number_discounted_items = floor((item_counter[item]) / required_amount)
+
+    #         elif item == offer_item and whole_cart_offers[item][1] in item_counter:
+    #             required_amount = whole_cart_offers[item][0]
+    #             number_discounted_items = floor(item_counter[item] / required_amount)
+
+    #         if number_discounted_items >= item_counter[free_item]:
+    #             item_counter[free_item] = 0
+    #         else:
+    #             item_counter[free_item] -= number_discounted_items
+
+    # return item_counter
+
 
 
 
