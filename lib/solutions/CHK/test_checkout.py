@@ -1,5 +1,5 @@
 import unittest
-from ....lib.solutions.CHK.checkout_solution import checkout, itemcost
+from checkout_solution import checkout, itemcost
 
 class TestCheckout(unittest.TestCase):
     def test_finalprice_checkout(self):
@@ -9,6 +9,7 @@ class TestCheckout(unittest.TestCase):
 
     def test_inptfail_checkout(self):
         self.assertEqual(checkout(3), -1)
+        self.assertEqual(checkout('1'), -1)
     
     def test_totaloffer_itemcost(self):
         self.assertEqual(itemcost('B', 3), 75)
@@ -17,4 +18,3 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
