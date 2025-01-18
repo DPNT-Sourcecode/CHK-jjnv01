@@ -22,11 +22,14 @@ whole_cart_offers = {
 def checkout(skus):
     if not isinstance(skus, str):
         return -1
-    
-    items = multiitem_offers(Counter(skus))
-    final_price = 0
-    for item in items:
-        final_price+=itemcost(item, items[item])
+
+    try:
+        items = multiitem_offers(Counter(skus))
+        final_price = 0
+        for item in items:
+            final_price+=itemcost(item, items[item])
+    except ValueError:
+        return -1
     return final_price
 
 def find_best_offer(item_name, amount, all_offers):
@@ -73,7 +76,7 @@ def itemcost(item_name, amount):
 def multiitem_offers(item_counter):
     for item in item_counter:
         if item not in individual_prices:
-            return -1
+            raise ValueError
         for offer_item in whole_cart_offers:
             if item==offer_item and whole_cart_offers[item][1] in item_counter:
                 free_item = whole_cart_offers[item][1]
@@ -86,6 +89,7 @@ def multiitem_offers(item_counter):
                     item_counter[free_item]-= number_discounted_items
 
     return item_counter
+
 
 
 
