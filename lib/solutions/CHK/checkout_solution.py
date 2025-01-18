@@ -79,8 +79,9 @@ def multiitem_offers(item_counter):
             raise ValueError
         for offer_item in whole_cart_offers:
             if item == offer_item and item == whole_cart_offers[item][1]:
-                number_discounted_items = item_counter[item]
-                number_discounted_items -= whole_cart_offers[item][0]
+                required_amount = whole_cart_offers[item][0]
+                number_discounted_items = floor(item_counter[item] -  1 / required_amount)
+                number_discounted_items += required_amount
 
             if item == offer_item and whole_cart_offers[item][1] in item_counter:
                 free_item = whole_cart_offers[item][1]
@@ -93,5 +94,6 @@ def multiitem_offers(item_counter):
                     item_counter[free_item] -= number_discounted_items
 
     return item_counter
+
 
 
