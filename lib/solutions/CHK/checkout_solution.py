@@ -46,8 +46,22 @@ def itemcost(item, amount):
     item_cost = total_offer + (amount*individual_prices[item])
     return item_cost
 
+def find_best_offer(item_name,amount, all_offers):
+    best_offer_amount, best_offer_price = None, None
+    if item_name in special_offers:
+        best_offer_amount = 0 
+        for i in range(len(all_offers[item_name])):
+            offer_amount = all_offers[item_name][i][0]
+            offer_price = all_offers[item_name][i][1]
+            if offer_amount<=amount and offer_amount>best_offer_amount:
+                best_offer_price = offer_price
+                best_offer_amount = offer_amount
+    return best_offer_amount, best_offer_price
+
+
 
 
     
+
 
 
