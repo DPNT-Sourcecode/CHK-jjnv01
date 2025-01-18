@@ -21,8 +21,11 @@ def checkout(skus):
     
     items = Counter(skus)
     final_price = 0
-    for item in items:
-        final_price+=itemcost(item, items[item])
+    try:
+        for item in items:
+            final_price+=itemcost(item, items[item])
+    except ValueError:
+        return -1
     return final_price
 
 def itemcost(item, amount):

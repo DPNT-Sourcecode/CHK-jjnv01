@@ -13,3 +13,7 @@ class TestCheckout(unittest.TestCase):
     def test_totaloffer_itemcost(self):
         self.assertEqual(itemcost('B', 3), 75)
         self.assertEqual(itemcost('B', 5), 90+30)
+
+
+if __name__ == '__main__':
+    unittest.main()
