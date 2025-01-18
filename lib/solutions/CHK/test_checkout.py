@@ -7,6 +7,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('BBBBB'), 120)
         self.assertEqual(checkout('AAA'), 130)
         self.assertEqual(checkout('AAABBCD'), 130+45+20+15)
+        self.assertEqual(checkout('EEB'), 80)
 
     def test_inptfail_checkout(self):
         self.assertEqual(checkout(3), -1)
