@@ -10,4 +10,3 @@ class TestSum(unittest.TestCase):
         self.assertEqual(sum_solution.compute(2,3), 5)
 
 
-
