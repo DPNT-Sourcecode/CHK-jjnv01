@@ -5,14 +5,13 @@ individual_prices = {
     'A':50, 
     'B':30, 
     'C':20, 
-    'D':15
+    'D':15,
+    'E': 40,
 }
 
 special_offers = {
-    'A':(3, 130), 
-    'B':(2, 45), 
-    'A':(5, 200), 
-    'E':(2, )
+    'A':[(3, 130), (5,200)], 
+    'B':[(2, 45)],  
 }
 
 # noinspection PyUnusedLocal
@@ -30,15 +29,15 @@ def checkout(skus):
         return -1
     return final_price
 
-def itemcost(item, amount):
+def itemcost(item: str, amount: int):
     if item not in individual_prices.keys():
         raise ValueError("Item not available")
     
     total_offer = 0
-
-    if item in special_offers:
-        special_offer_item = special_offers[item][0]
-        special_offer_price = special_offers[item][1]
+    breakpoint()
+    if product, offers in special_offers.items():
+        special_offer_item = special_offers[product][0]
+        special_offer_price = special_offers[product][1]
 
         if amount>=special_offer_item:
             offers = floor(amount/special_offer_item)
@@ -47,4 +46,11 @@ def itemcost(item, amount):
     
     item_cost = total_offer + (amount*individual_prices[item])
     return item_cost
+
+
+def find_best_offer(item_name, amount):
+    best_offer = None
+    possible_offers = special_offers[item_name]
+    
+
 
