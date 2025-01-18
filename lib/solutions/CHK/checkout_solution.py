@@ -6,14 +6,12 @@ individual_prices = {
     'B':30, 
     'C':20, 
     'D':15,
-    'E': 40,
+    'E':40,
 }
 
 special_offers = {
     'A':[(3, 130), (5,200)], 
-    'B':[(2, 45)],  
-    'E':(2, )
-}
+    'B':[(2, 45)]}
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -49,8 +47,7 @@ def itemcost(item, amount):
     return item_cost
 
 
-def find_best_offer(item_name, amount):
-    best_offer = None
-    possible_offers = special_offers[item_name]
+
     
+
 
