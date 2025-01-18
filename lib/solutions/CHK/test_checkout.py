@@ -11,14 +11,18 @@ class TestCheckout(unittest.TestCase):
 
         # self.assertEqual(30, checkout('B'))
     
-    def test_stringfailure(self):
+    def test_checkout_invalid_inputs(self):
         self.assertEqual(checkout(3), -1)
         self.assertEqual(checkout('1'), -1)
+        self.assertEqual(checkout('!@#'), -1)
+        self.assertEqual(checkout(''), 0)  # No items
 
-    def test_offer_price(self):
+    def test_itemcost(self):
         # self.assertEqual(calculate_cost('B', 2), 45)
         self.assertEqual(itemcost('B', 3), 75)
         self.assertEqual(itemcost('B', 5), 90+30)
+        self.assertEqual(itemcost('A', 10), 200 + 200)  
+        self.assertEqual(itemcost('C', 2), 40) 
 
     def test_find_all_offers(self):
         self.assertEqual(find_all_offers('A', 10), [[5, 200], [5, 200]])
@@ -29,3 +33,4 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
