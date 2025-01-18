@@ -34,8 +34,9 @@ def itemcost(item: str, amount: int):
         raise ValueError("Item not available")
     
     total_offer = 0
-    breakpoint()
-    if product, offers in special_offers.items():
+    if item in special_offers:
+
+        apply_best_offer
         special_offer_item = special_offers[product][0]
         special_offer_price = special_offers[product][1]
 
@@ -52,5 +53,6 @@ def find_best_offer(item_name, amount):
     best_offer = None
     possible_offers = special_offers[item_name]
     
+
 
 
