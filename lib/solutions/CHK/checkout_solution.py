@@ -32,23 +32,19 @@ def checkout(skus):
         return -1
     return final_price
 
-def itemcost(item, amount):
-    if item not in individual_prices.keys():
-        raise ValueError("Item not available")
-    
-    total_offer = 0
-
-    if item in special_offers:
-        special_offer_item = special_offers[item][0]
-        special_offer_price = special_offers[item][1]
-
-        if amount>=special_offer_item:
-            offers = floor(amount/special_offer_item)
-            total_offer+=special_offer_price*offers
-            amount-=offers*special_offer_item
-    
-    item_cost = total_offer + (amount*individual_prices[item])
-    return item_cost
+def itemcost(item_name, amount):
+    discounted_price = 0
+    offers = find_all_offers(item_name, amount)
+    if offers:
+        for offer in offers:
+            offer_amount = offer[0]
+            offer_price = offer[1]
+            if amount>=offer_amount:
+                number_offers = floor(amount/offer_amount)
+                discounted_price+=offer_price*number_offers
+                amount-=number_offers*offer_amount
+    final_price = amount*individual_prices[item_name] + discounted_price
+    return final_price
 
 def find_best_offer(item_name,amount, all_offers):
     best_offer_amount, best_offer_price = None, None
@@ -90,8 +86,4 @@ def multiitem_offers(item_counter):
     return item_counter
 
     
-
-
-
-
 
