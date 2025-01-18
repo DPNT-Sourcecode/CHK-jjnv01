@@ -72,6 +72,8 @@ def itemcost(item_name, amount):
 
 def multiitem_offers(item_counter):
     for item in item_counter:
+        if item not in individual_prices:
+            return -1
         for offer_item in whole_cart_offers:
             if item==offer_item and whole_cart_offers[item][1] in item_counter:
                 free_item = whole_cart_offers[item][1]
@@ -84,6 +86,7 @@ def multiitem_offers(item_counter):
                     item_counter[free_item]-= number_discounted_items
 
     return item_counter
+
 
 
 
