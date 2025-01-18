@@ -10,7 +10,9 @@ individual_prices = {
 
 special_offers = {
     'A':(3, 130), 
-    'B':(2, 45)
+    'B':(2, 45), 
+    'A':(5, 200), 
+    'E':(2, )
 }
 
 # noinspection PyUnusedLocal
@@ -45,4 +47,5 @@ def itemcost(item, amount):
     
     item_cost = total_offer + (amount*individual_prices[item])
     return item_cost
+
 
