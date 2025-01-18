@@ -16,6 +16,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("BBBBB"), 120)
         self.assertEqual(checkout("AAABBCD"), 130 + 45 + 20 + 15)
         self.assertEqual(checkout("EEB"), 80)
+        self.assertEqual(checkout("FFF"), 20)
 
 
     def test_checkout_invalid_inputs(self):
@@ -46,6 +47,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(multiitem_offers(Counter("EEBBB")), Counter({"E": 2, "B": 2}))
         self.assertEqual(multiitem_offers(Counter("FFF")),Counter({"F": 2}))
         self.assertEqual(multiitem_offers(Counter("FF")),Counter({"F": 2}))
+        self.assertEqual(multiitem_offers(Counter("FFFFF")),Counter({"F": 3}))
 
 
     def test_edge_cases(self):
@@ -58,5 +60,3 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
