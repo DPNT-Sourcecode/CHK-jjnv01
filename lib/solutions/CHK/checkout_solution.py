@@ -1,4 +1,4 @@
-from collections import Counter, defaultdict
+from collections import Counter
 from math import floor
 
 individual_prices = {
@@ -28,9 +28,8 @@ def checkout(skus):
 
 
 def find_best_offer(item_name, amount, all_offers):
-    best_offer_amount, best_offer_price = None, None
+    best_offer_amount, best_offer_price = 0, None
     if item_name in special_offers:
-        best_offer_amount = 0
         for i in range(len(all_offers[item_name])):
             offer_amount = all_offers[item_name][i][0]
             offer_price = all_offers[item_name][i][1]
@@ -88,6 +87,7 @@ def multiitem_offers(item_counter):
                     item_counter[free_item] -= number_discounted_items
 
     return item_counter
+
 
 
 
