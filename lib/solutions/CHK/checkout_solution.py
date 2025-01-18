@@ -7,11 +7,13 @@ individual_prices = {
     "C": 20,
     "D": 15,
     "E": 40,
+    "F":10
 }
 
 special_offers = {"A": [(3, 130), (5, 200)], "B": [(2, 45)]}
 
-whole_cart_offers = {"E": (2, "B")}
+whole_cart_offers = {"E": (2, "B"), 
+                     "F":(2, "F")}
 
 
 def checkout(skus):
@@ -77,8 +79,9 @@ def multiitem_offers(item_counter):
             raise ValueError
         for offer_item in whole_cart_offers:
             if item == offer_item and item == whole_cart_offers[item][1]:
+                number_discounted_items = item_counter[item]
                 number_discounted_items -= whole_cart_offers[item][0]
-                
+
             if item == offer_item and whole_cart_offers[item][1] in item_counter:
                 free_item = whole_cart_offers[item][1]
                 required_amount = whole_cart_offers[item][0]
@@ -90,4 +93,5 @@ def multiitem_offers(item_counter):
                     item_counter[free_item] -= number_discounted_items
 
     return item_counter
+
 
