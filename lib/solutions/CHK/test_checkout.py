@@ -44,12 +44,18 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(multiitem_offers(Counter("EEEEBB")), Counter({"E": 4, "B": 0}))
         self.assertEqual(multiitem_offers(Counter("EEB")), Counter({"E": 2, "B": 0}))
         self.assertEqual(multiitem_offers(Counter("EEBBB")), Counter({"E": 2, "B": 2}))
+        self.assertEqual(multiitem_offers(Counter("FFF"),Counter({"F": 2})))
+        self.assertEqual(multiitem_offers(Counter("FF"),Counter({"F": 2})))
+
 
     def test_edge_cases(self):
         self.assertEqual(checkout("AAABBBCCC"), 130 + 75 + 60)
         self.assertEqual(checkout(""), 0)
         self.assertEqual(find_all_offers("B", 0), [])
 
+    
+
 
 if __name__ == "__main__":
     unittest.main()
+
