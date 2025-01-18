@@ -48,4 +48,3 @@ def itemcost(item, amount):
     item_cost = total_offer + (amount*individual_prices[item])
     return item_cost
 
-
