@@ -121,5 +121,3 @@ def multiitem_offers(item_counter):
                 else:
                     item_counter[free_item]-= number_discounted_items
     return item_counter
-
-
