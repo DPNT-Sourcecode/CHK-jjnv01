@@ -141,6 +141,10 @@ def find_group_offer(skus):
     if len(selected_items)==3:
         for item in selected_items:
             item_counter[item]-=1
+        
+        # Updating number of offers applied 
+        n_of_group_offers=1
+        
     elif len(selected_items)>3:
         # sorting selected items based on their price
         sorted_items = sorted(selected_items, key=lambda x: individual_prices.get(x, float('inf')), reverse=True)
@@ -168,4 +172,5 @@ def find_group_offer(skus):
 
 
         
+
 

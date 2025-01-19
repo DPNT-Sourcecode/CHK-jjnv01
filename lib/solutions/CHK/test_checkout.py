@@ -67,6 +67,12 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(find_group_offer("XXXYYZZZ")[0], Counter({"X":2, "Z":0, "Y":0}))
         self.assertEqual(find_group_offer("SSSTTZZZ")[1], 90)
         self.assertEqual(find_group_offer("XXXYYZZZ")[1], 90)
+        self.assertEqual(find_group_offer("STX")[0], Counter({"S":0, "T":0, "X":0}))
+        self.assertEqual(find_group_offer("STX")[1], 45)
+        self.assertEqual(find_group_offer("SSS")[0], Counter({"S":0}))
+        self.assertEqual(find_group_offer("SSS")[1], 45)
+
+      
 
 
     
@@ -74,4 +80,5 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
