@@ -141,7 +141,26 @@ def find_group_offer(skus):
     elif len(selected_items)>3:
         # sorting selected items based on their price
         sorted_items = sorted(selected_items, key=lambda x: individual_prices.get(x, float('inf')), reverse=True)
+
+        # creating groups of 3 items each in the sorted list
         groups = [sorted_items[i:i+3] for i in range(0, len(sorted_items), 3)]
+
+        # selecting complete groups with 3 items each
+        selected_groups = [i for i in groups if len(i)==3]
+
+        # calculating the number of group offer discounts to apply
+        n_of_group_offers = len(selected_groups)
         
+        # deducting offered item from basket 
+        for group in selected_groups:
+            for item in group:
+                item_counter[item]-=1
+        
+
+
+
+
+        
+
 
 
