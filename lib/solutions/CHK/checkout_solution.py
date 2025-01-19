@@ -53,8 +53,11 @@ def checkout(skus):
     if not isinstance(skus, str):
         return -1
     try:
-        items = multiitem_offers(Counter(skus))
-        final_price = 0
+        group_offers_applied = find_group_offer(skus)
+        item_counter = group_offers_applied[0]
+        running_price = group_offers_applied[1]
+        items = multiitem_offers(item_counter)
+        final_price = running_price
         for item in items:
             final_price += itemcost(item, items[item])
     except ValueError:
@@ -165,3 +168,4 @@ def find_group_offer(skus):
 
 
         
+
