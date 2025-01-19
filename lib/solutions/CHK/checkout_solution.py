@@ -46,6 +46,8 @@ whole_cart_offers = {"E": (2, "B"),
                      "U":(3, "U")
                      }
 
+group_offers = {"STXYZ":(3, 45)
+}
 
 def checkout(skus):
     if not isinstance(skus, str):
@@ -121,4 +123,25 @@ def multiitem_offers(item_counter):
                 else:
                     item_counter[free_item]-= number_discounted_items
     return item_counter
+
+def find_group_offer(skus):
+    item_counter = Counter(skus)
+    selected_items=[]
+    n_of_group_offers = 0
+    for item in item_counter:
+        if item not in individual_prices:
+            raise ValueError
+        for offer in group_offers:
+            if item in offer:
+                selected_items.extend(item*item_counter[item])
+    
+    if len(selected_items)==3:
+        for item in selected_items:
+            item_counter[item]-=1
+    elif len(selected_items)>3:
+        # sorting selected items based on their price
+        sorted_items = sorted(selected_items, key=lambda x: individual_prices.get(x, float('inf')), reverse=True)
+        groups = [sorted_items[i:i+3] for i in range(0, len(sorted_items), 3)]
+        
+
 
