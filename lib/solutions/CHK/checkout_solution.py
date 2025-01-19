@@ -23,6 +23,7 @@ individual_prices = {
     "S":30,
     "T":20,
     "U":40,
+    "V":50,
     "W":20,
     "X":90,
     "Y":10,
@@ -120,4 +121,5 @@ def multiitem_offers(item_counter):
                 else:
                     item_counter[free_item]-= number_discounted_items
     return item_counter
+
 

@@ -19,6 +19,8 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("FFF"), 20)
         self.assertEqual(checkout("PPPPP"), 200)
         self.assertEqual(checkout("UUUU"), 120)
+        self.assertEqual(checkout("V"), 50)
+        self.assertEqual(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 965)
 
 
     def test_checkout_invalid_inputs(self):
@@ -63,4 +65,5 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
