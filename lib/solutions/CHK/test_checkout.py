@@ -6,6 +6,7 @@ from checkout_solution import (
     multiitem_offers,
     find_all_offers,
     find_best_offer,
+    find_group_offer,
     special_offers
 )
 
@@ -59,6 +60,13 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("AAABBBCCC"), 130 + 75 + 60)
         self.assertEqual(checkout(""), 0)
         self.assertEqual(find_all_offers("B", 0), [])
+
+    def test_group_offer(self):
+        self.assertEqual(find_group_offer("SSSTTZZZ")[0], Counter({"S":0, "T":2, "Z":0}))
+        self.assertEqual(find_group_offer("XXXYYZZZ")[0], Counter({"X":2, "Z":0, "Y":0}))
+        self.assertEqual(find_group_offer("SSSTTZZZ")[1], 90)
+        self.assertEqual(find_group_offer("XXXYYZZZ")[1], 90)
+
 
     
 

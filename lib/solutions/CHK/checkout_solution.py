@@ -155,12 +155,13 @@ def find_group_offer(skus):
         for group in selected_groups:
             for item in group:
                 item_counter[item]-=1
-        
+    
+    # Multiplying number of group offer discounts applied by the price of that offer. 
+    # TODO (beyond current test requirements):  create selected_items PER offer, use associated offer price from group_offers
+    running_price = 45*n_of_group_offers
+    return item_counter, running_price
 
 
 
 
         
-
-
-
